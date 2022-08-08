@@ -3,7 +3,6 @@ import { Button, InputAdornment, TextField } from "@mui/material"
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import { useState } from "react";
-import { sampleCall } from "./Contact";
 
 export const Login=()=>{
 
@@ -24,7 +23,6 @@ export const Login=()=>{
 
     const onLogin=async()=>{
         alert(JSON.stringify(user)+" trying to login")
-        await sampleCall()
     }
 
     const onReset=()=>{
