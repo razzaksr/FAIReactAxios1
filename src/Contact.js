@@ -5,6 +5,34 @@ const url="http://localhost:8080/BackEndFAI"
 const mine="razak:mohamed"
 const tok=btoa(mine)
 
+export const callLogout=async()=>{
+    await axios.get(`${url}/logout`)
+    sessionStorage.removeItem("valid")
+    return;
+}
+
+export const callLogin=async(obj)=>{
+    const credentials=obj.username+":"+obj.password
+    const token=btoa(credentials)
+    //alert(token)
+
+    try{
+        const t = await axios.get(`${url}/`,{headers:{"Authorization":`Basic ${token}`}})
+        if(t.data){
+            sessionStorage.setItem("valid",token)
+        }
+        return t;
+    }
+    catch(hai){
+        alert(hai)
+    }
+}
+
+
+
+
+
+
 export const callSimpleReturn=async()=>{
     const receiv=await axios.get(`${url}/askint`,{
         headers:{"Authorization":`Basic ${tok}`}

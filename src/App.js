@@ -2,12 +2,15 @@ import { Login } from "./Login";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from "@mui/material";
 import { callSimpleReturn, passByBody, sampleCall, simpleCall } from "./Contact";
+import { List } from "./List";
+import { Home } from "./Home";
 
 const App=()=>{
   return(
     <>
-      {/* <Login/> */}
-      <Button variant="outlined" color="error" onClick={async()=>{
+      <Home/>
+      {/* <List/> */}
+      {/* <Button variant="outlined" color="error" onClick={async()=>{
         await sampleCall()
       }}>
         Call without param and Return
@@ -27,7 +30,7 @@ const App=()=>{
         alert(t.data)
       }}>
         Call without param and but Returning
-      </Button><br/>
+      </Button><br/> */}
     </>
   )
 }
