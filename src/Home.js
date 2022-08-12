@@ -2,11 +2,12 @@ import { WindowSharp } from "@mui/icons-material"
 import { Button } from "@mui/material"
 import { useEffect, useState } from "react"
 import { callLogout } from "./Contact"
+import { List } from "./List"
 import { Login } from "./Login"
 
 export const Home=()=>{
 
-    const[logview,setLogview]=useState(false)
+    const[logview,setLogview]=useState(true)
 
     const check=()=>{
         const t= sessionStorage.getItem("valid")
@@ -30,6 +31,7 @@ export const Home=()=>{
                 :
                 <>
                     <h1>Home page</h1>
+                    <List/>
                     <Button color="error" onClick={async()=>{
                         await callLogout()
                         window.location.assign("/")

@@ -1,9 +1,19 @@
-import { useState } from "react";
-import { DataGrid, MAX_PAGE_SIZE } from '@mui/x-data-grid';
+import { useEffect, useState } from "react";
+import { DataGrid } from '@mui/x-data-grid';
+import { callList } from "./Contact";
 
 export const List=()=>{
 
     const[records,setRecords]=useState([])
+
+    const loading=async()=>{
+        const tmp =  await callList()
+        setRecords(tmp.data)
+    }
+
+    useEffect(()=>{
+        loading()
+    },[])
 
     const columns = [
         { field: 'tvId', headerName: 'Television ID', width: 200 },
@@ -24,6 +34,7 @@ export const List=()=>{
                                 columns={columns}
                                 rows={records}
                                 pageSize={7}
+                                getRowId={(sil)=>sil.tvId}
                                 rowsPerPageOptions={[7]}
                             />
                         </div>

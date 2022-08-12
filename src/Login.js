@@ -25,7 +25,7 @@ export const Login=()=>{
 
     const onLogin=async()=>{
         alert(JSON.stringify(user)+" trying to login")
-        const ter = await callLogin(user)
+        await callLogin(user)
         //alert(JSON.stringify(ter.data))
         window.location.assign("/")
     }

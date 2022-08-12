@@ -5,6 +5,20 @@ const url="http://localhost:8080/BackEndFAI"
 const mine="razak:mohamed"
 const tok=btoa(mine)
 
+export const callList=async()=>{
+    try{
+        const t = await axios.get(`${url}/`,{
+            headers:{
+                "Authorization":`Basic ${sessionStorage.getItem('valid')}`
+            }
+        })
+        return t
+    }
+    catch(err){
+        alert(err)
+    }
+}
+
 export const callLogout=async()=>{
     await axios.get(`${url}/logout`)
     sessionStorage.removeItem("valid")
@@ -21,7 +35,6 @@ export const callLogin=async(obj)=>{
         if(t.data){
             sessionStorage.setItem("valid",token)
         }
-        return t;
     }
     catch(hai){
         alert(hai)
