@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import { callList } from "./Contact";
 
-export const List=()=>{
+export const List=(properties)=>{
 
     const[records,setRecords]=useState([])
 
@@ -31,6 +31,15 @@ export const List=()=>{
                     <div className="table-responsive-lg">
                         <div style={{ height: 400, width: '100%' }} className="col-lg-8 col-md-10 col-sm-12">
                             <DataGrid
+                                onSelectionModelChange={(collected)=>{
+                                    alert(collected)
+                                    const obj=records.filter((each)=>{
+                                        return each.tvId==collected
+                                    })
+                                    //alert(JSON.stringify(obj))
+                                    properties.filling(obj[0])
+                                    //window.location.assign("/")
+                                }}
                                 columns={columns}
                                 rows={records}
                                 pageSize={7}
