@@ -6,13 +6,16 @@ import { Login } from "./Login"
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
+import NoteAddIcon from '@mui/icons-material/NoteAdd';
 import { Read } from "./Read"
+import { Create } from "./Create"
 
 export const Home=()=>{
 
     const[logview,setLogview]=useState(true)
     const[listview,setListview]=useState(false)
     const[readview,setReadview]=useState(false)
+    const[createview,setCreateview]=useState(false)
     const[databox,setDatabox]=useState({})
 
     const check=()=>{
@@ -46,6 +49,7 @@ export const Home=()=>{
                                 <MeetingRoomIcon/>Logout
                             </Button>
                             <Button className="col-1" color="success" onClick={()=>{
+                                setCreateview(false)
                                 setListview(true)
                             }}>
                                 <FormatListBulletedIcon/>List
@@ -57,8 +61,14 @@ export const Home=()=>{
                             }}>
                                 <ChromeReaderModeIcon/>Read
                             </Button>
+                            <Button className="col-1" color="warning" onClick={()=>{
+                                setCreateview(true)
+                            }}>
+                                <NoteAddIcon/>Create
+                            </Button>
                         </div>
                         {
+                            (createview)?<Create/>:
                             (listview)?<List filling={setDatabox}/>:
                             (readview)?<Read obj={databox}/>:<></>
                         }

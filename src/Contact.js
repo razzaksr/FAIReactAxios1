@@ -5,6 +5,13 @@ const url="http://localhost:8080/BackEndFAI"
 const mine="razak:mohamed"
 const tok=btoa(mine)
 
+export const callCreate=async(object)=>{
+    const t = await axios.post(`${url}/new`,object,{
+        headers:{"Authorization":`Basic ${sessionStorage.getItem('valid')}`}
+    })
+    return t
+}
+
 export const callList=async()=>{
     try{
         const t = await axios.get(`${url}/`,{
