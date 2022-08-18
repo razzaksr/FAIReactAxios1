@@ -1,17 +1,19 @@
-import { Button, TextField,Typography } from "@mui/material"
+import { Button, TextField } from "@mui/material"
 import { useState } from "react"
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import PhonelinkEraseIcon from '@mui/icons-material/PhonelinkErase';
+import { callUpdate } from "./Contact";
 
 
-export const Update=()=>{
+export const Update=(silviya)=>{
 
     const[vision,setVision]=useState({
-        "model":"",
-        "brand":"",
-        "cost":0,
-        "inches":0.0,
-        "type":""
+        "tvId":silviya.one.tvId,
+        "model":silviya.one.model,
+        "brand":silviya.one.brand,
+        "cost":silviya.one.cost,
+        "inches":silviya.one.inches,
+        "type":silviya.one.type
     })
 
     const assemble=(pack)=>{
@@ -25,9 +27,9 @@ export const Update=()=>{
     }
 
     const onUpdate=async()=>{
-        const tmp = await callCreate(vision)
-        alert(tmp.data)
-        onCancel()
+        const tmp = await callUpdate(vision)
+        alert(JSON.stringify(tmp.data)+" has updated")
+        window.location.assign("/")
     }
 
     const onCancel=()=>{
@@ -43,7 +45,7 @@ export const Update=()=>{
     return(
         <>
             <div className="container mt-4">
-                <h1 className="text-primary text-center">Add new television to stock</h1>
+                <h1 className="text-primary text-center">Update the television</h1>
                 <div className="row justify-content-center">
                     <div className="col-lg-7 col-md-10 col-sm-12 rounded-3 shadow-lg p-3">
                         <TextField 

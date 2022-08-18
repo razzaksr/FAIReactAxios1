@@ -5,6 +5,24 @@ const url="http://localhost:8080/BackEndFAI"
 const mine="razak:mohamed"
 const tok=btoa(mine)
 
+export const callDelete=async(object)=>{
+    const t = await axios.delete(`${url}/delid/${object.tvId}`,{
+        headers:{
+            "Authorization":`Basic ${sessionStorage.getItem('valid')}`
+        }
+    })
+    return t
+}
+
+export const callUpdate=async(object)=>{
+    const t = await axios.put(`${url}/up`,object,{
+        headers:{
+            "Authorization":`Basic ${sessionStorage.getItem('valid')}`
+        }
+    })
+    return t;
+}
+
 export const callCreate=async(object)=>{
     const t = await axios.post(`${url}/new`,object,{
         headers:{"Authorization":`Basic ${sessionStorage.getItem('valid')}`}
