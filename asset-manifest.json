@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FAIReactAxios1/static/css/main.84487ea8.css",
+    "main.js": "/FAIReactAxios1/static/js/main.22e6e15f.js",
+    "index.html": "/FAIReactAxios1/index.html",
+    "main.84487ea8.css.map": "/FAIReactAxios1/static/css/main.84487ea8.css.map",
+    "main.22e6e15f.js.map": "/FAIReactAxios1/static/js/main.22e6e15f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84487ea8.css",
+    "static/js/main.22e6e15f.js"
+  ]
+}
